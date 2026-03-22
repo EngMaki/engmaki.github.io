@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<!-- Adicionado scroll-padding para compensar a altura do cabeçalho fixo -->
+<html lang="pt-BR" class="scroll-smooth scroll-pt-[120px] lg:scroll-pt-[200px]">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENGMAKI | Soluções Industriais e Automação</title>
+    
+    <!-- Tailwind CSS para Estilização -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Configuração de Cores da Marca (Extraídas da Logo) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        engblue: '#0B1E36',   /* Azul Marinho Profundo */
+                        engblue_light: '#15365d',
+                        engyellow: '#FBBF24', /* Amarelo Industrial */
+                        enggray: '#F3F4F6',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Ícones Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* Estilos customizados complementares */
+        .hero-bg {
+            background-image: linear-gradient(to right, rgba(11, 30, 54, 0.95), rgba(11, 30, 54, 0.7)), url('parte de infra estrutura passagem de cabos 4.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .clip-path-diagonal {
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        }
+
+        .image-hover-zoom {
+            overflow: hidden;
+        }
+        .image-hover-zoom img {
+            transition: transform 0.5s ease;
+        }
+        .image-hover-zoom:hover img {
+            transform: scale(1.1);
+        }
+
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #FBBF24;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased selection:bg-engyellow selection:text-engblue">
+
+    <!-- Navbar: Fundo sólido 100% branco para não dar conflito com o fundo da logo -->
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-white shadow-md border-b border-gray-100" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-3">
+                
+                <!-- Logo -->
+                <a href="#inicio" class="flex-shrink-0 flex items-center h-[90px] sm:h-[110px] md:h-[140px] lg:h-[160px] transition-transform hover:scale-105">
+                    <img 
+                        class="h-full w-auto object-contain mix-blend-multiply" 
+                        src="Logo atualizada.jpg" 
+                        alt="ENGMAKI Logo"
+                        onerror="this.onerror=null; this.src='Logo.jpeg';"
+                    >
+                </a>
+                
+                <!-- Menu Desktop -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#inicio" class="nav-link text-engblue font-semibold text-sm uppercase tracking-wider">Início</a>
+                    <a href="#solucoes" class="nav-link text-engblue font-semibold text-sm uppercase tracking-wider">Soluções</a>
+                    <a href="#portfolio" class="nav-link text-engblue font-semibold text-sm uppercase tracking-wider">Portfólio</a>
+                    <a href="#contato" class="bg-engyellow text-engblue px-6 py-3 rounded-md font-bold text-sm uppercase tracking-wider hover:bg-yellow-400 transition-colors shadow-md">
+                        Fale Conosco
+                    </a>
+                </div>
+
+                <!-- Menu Mobile Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-engblue hover:text-engyellow focus:outline-none">
+                        <i data-lucide="menu" class="h-8 w-8"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-xl">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col">
+                <a href="#inicio" class="block px-3 py-3 text-engblue font-semibold border-b border-gray-50">Início</a>
+                <a href="#solucoes" class="block px-3 py-3 text-engblue font-semibold border-b border-gray-50">Soluções</a>
+                <a href="#portfolio" class="block px-3 py-3 text-engblue font-semibold border-b border-gray-50">Portfólio</a>
+                <a href="#contato" class="block px-3 py-3 text-engyellow font-bold bg-engblue rounded mt-2 text-center">Fale Conosco</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-bg min-h-screen flex items-center pt-36 md:pt-48 clip-path-diagonal">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 pb-20">
+            <div class="max-w-3xl">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm text-engyellow text-sm font-semibold mb-6 uppercase tracking-widest">
+                    <span class="w-2 h-2 rounded-full bg-engyellow animate-pulse"></span>
+                    Alta Performance Industrial
+                </div>
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-6">
+                    Soluções Completas em <span class="text-engyellow">Elétrica e Automação</span>
+                </h1>
+                <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl font-light leading-relaxed">
+                    Da infraestrutura robusta de tubulações ao controle inteligente via SCADA e laudos de SPDA. A ENGMAKI garante a continuidade operacional da sua indústria com rigor técnico e segurança.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#solucoes" class="flex items-center justify-center gap-2 bg-engyellow text-engblue px-8 py-4 rounded-md font-bold text-lg hover:bg-yellow-400 transition-all shadow-lg hover:shadow-yellow-500/30">
+                        Conheça Nossas Soluções <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#portfolio" class="flex items-center justify-center gap-2 bg-transparent border-2 border-white text-white px-8 py-4 rounded-md font-bold text-lg hover:bg-white hover:text-engblue transition-all">
+                        Ver Obras Realizadas
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats / Trust Bar -->
+    <section class="py-10 bg-white border-b border-gray-200 -mt-16 relative z-20 mx-4 md:mx-auto max-w-6xl rounded-xl shadow-xl">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 px-8 text-center divide-x divide-gray-100">
+            <div class="flex flex-col items-center">
+                <i data-lucide="shield-check" class="text-engyellow w-10 h-10 mb-2"></i>
+                <h3 class="text-3xl font-bold text-engblue">NR12</h3>
+                <p class="text-xs text-gray-500 uppercase tracking-wide mt-1">Adequação de Máquinas</p>
+            </div>
+            <div class="flex flex-col items-center">
+                <i data-lucide="zap" class="text-engyellow w-10 h-10 mb-2"></i>
+                <h3 class="text-3xl font-bold text-engblue">CCM & QGBT</h3>
+                <p class="text-xs text-gray-500 uppercase tracking-wide mt-1">Montagem de Painéis</p>
+            </div>
+            <div class="flex flex-col items-center">
+                <i data-lucide="monitor-cog" class="text-engyellow w-10 h-10 mb-2"></i>
+                <h3 class="text-3xl font-bold text-engblue">SCADA</h3>
+                <p class="text-xs text-gray-500 uppercase tracking-wide mt-1">Automação Avançada</p>
+            </div>
+            <div class="flex flex-col items-center">
+                <i data-lucide="factory" class="text-engyellow w-10 h-10 mb-2"></i>
+                <h3 class="text-3xl font-bold text-engblue">100%</h3>
+                <p class="text-xs text-gray-500 uppercase tracking-wide mt-1">Foco na Indústria</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Soluções (Serviços) -->
+    <section id="solucoes" class="py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-engyellow font-bold tracking-widest uppercase mb-2">Nossa Expertise</h2>
+                <h3 class="text-3xl md:text-5xl font-extrabold text-engblue">Engenharia Integrada para o Setor Industrial</h3>
+                <div class="w-20 h-1.5 bg-engyellow mx-auto mt-6 rounded-full"></div>
+            </div>
+
+            <!-- Grade de 6 cartões perfeitamente equilibrados -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Serviço 1: Infraestrutura e Montagem -->
+                <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-lg hover:shadow-xl transition-shadow group">
+                    <div class="w-14 h-14 bg-engblue text-engyellow rounded-xl flex items-center justify-center mb-6 group-hover:-translate-y-2 transition-transform">
+                        <i data-lucide="pipette" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold text-engblue mb-4">Montagem & Tubulação</h4>
+                    <p class="text-gray-600 mb-4 leading-relaxed">Instalação de tubulações em aço inox e carbono, montagem de sala de máquinas, conjuntos motobombas e infraestrutura mecânica de alta precisão.</p>
+                    <ul class="text-sm text-gray-500 space-y-2 font-medium">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="text-engyellow w-4 h-4"></i> Estruturas Metálicas</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="text-engyellow w-4 h-4"></i> Sistemas de Bombeamento</li>
+                    </ul>
+                </div>
+
+                <!-- Serviço 2: Infraestrutura Elétrica -->
+                <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-lg hover:shadow-xl transition-shadow group">
+                    <div class="w-14 h-14 bg-engblue text-engyellow rounded-xl flex items-center justify-center mb-6 group-hover:-translate-y-2 transition-transform">
+                        <i data-lucide="cable" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold text-engblue mb-4">Infraestrutura Elétrica</h4>
+                    <p class="text-gray-600 mb-4 leading-relaxed">Passagem de cabos de força e controle, instalação de eletrocalhas, leitos aéreos e sistemas de aterramento organizados rigorosamente.</p>
+                    <ul class="text-sm text-gray-500 space-y-2 font-medium">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="text-engyellow w-4 h-4"></i> Leitos e Eletrocalhas</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="text-engyellow w-4 h-4"></i> Cabeamento Estruturado</li>
+                    </ul>
+                </div>
+
+                <!-- Serviço 3: Painéis -->
+                <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-lg hover:shadow-xl transition-shadow group">
+                    <div class="w-14 h-14 bg-engblue text-engyellow rounded-xl flex items-center justify-center mb-6 group-hover:-translate-y-2 transition-transform">
+                        <i data-lucide="layout-panel-left" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold text-engblue mb-4">Quadros e Painéis</h4>
+                    <p class="text-gray-600 mb-4 leading-relaxed">Montagem de Painéis de Automação, CCMs (Centro de Controle de Motores) e QGBTs utilizando as melhores marcas do mercado (Siemens, Schneider).</p>
+                    <ul class="text-sm text-gray-500 space-y-2 font-medium">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="text-engyellow w-4 h-4"></i> Inversores e Soft Starters</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="text-engyellow w-4 h-4"></i> Bancos de Capacitores</li>
+                    </ul>
+                </div>
+
+                <!-- Serviço 4: Automação e SCADA -->
+                <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-lg hover:shadow-xl transition-shadow group">
+                    <div class="w-14 h-14 bg-engblue text-engyellow rounded-xl flex items-center justify-center mb-6 group-hover:-translate-y-2 transition-transform">
+                        <i data-lucide="cpu" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold text-engblue mb-4">Automação & SCADA</h4>
+                    <p class="text-gray-600 mb-4 leading-relaxed">Desenvolvimento de lógicas em CLP, interfaces IHM e sistemas supervisórios SCADA para controle de processos e monitoramento de tanques em tempo real.</p>
+                    <ul class="text-sm text-gray-500 space-y-2 font-medium">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="text-engyellow w-4 h-4"></i> Programação de CLPs</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="text-engyellow w-4 h-4"></i> Telas de Supervisório</li>
+                    </ul>
+                </div>
+
+                <!-- Serviço 5: SPDA e Aterramento -->
+                <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-lg hover:shadow-xl transition-shadow group">
+                    <div class="w-14 h-14 bg-engblue text-engyellow rounded-xl flex items-center justify-center mb-6 group-hover:-translate-y-2 transition-transform">
+                        <i data-lucide="zap-off" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold text-engblue mb-4">SPDA & Aterramento</h4>
+                    <p class="text-gray-600 mb-4 leading-relaxed">Instalação, manutenção e medição ôhmica de Sistemas de Proteção contra Descargas Atmosféricas e malhas de terra para máxima segurança.</p>
+                    <ul class="text-sm text-gray-500 space-y-2 font-medium">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="text-engyellow w-4 h-4"></i> Laudos e Aferições</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="text-engyellow w-4 h-4"></i> Projetos de SPDA</li>
+                    </ul>
+                </div>
+
+                <!-- Serviço 6: Iluminação -->
+                <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-lg hover:shadow-xl transition-shadow group">
+                    <div class="w-14 h-14 bg-engblue text-engyellow rounded-xl flex items-center justify-center mb-6 group-hover:-translate-y-2 transition-transform">
+                        <i data-lucide="lightbulb" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold text-engblue mb-4">Projetos de Iluminação</h4>
+                    <p class="text-gray-600 mb-4 leading-relaxed">Estudos luminotécnicos e instalação de iluminação de alta eficiência (LED) para barracões, garantindo economia e adequação às normas vigentes.</p>
+                    <ul class="text-sm text-gray-500 space-y-2 font-medium">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="text-engyellow w-4 h-4"></i> Painéis de Iluminação</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="text-engyellow w-4 h-4"></i> Redução de Consumo</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfólio de Obras (Galeria de Fotos Reais) -->
+    <section id="portfolio" class="py-24 bg-engblue text-white clip-path-diagonal">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div class="max-w-2xl">
+                    <h2 class="text-engyellow font-bold tracking-widest uppercase mb-2">Provas Reais</h2>
+                    <h3 class="text-3xl md:text-5xl font-extrabold mb-4">Nosso Trabalho em Campo</h3>
+                    <p class="text-gray-400">A qualidade da ENGMAKI pode ser atestada pelo acabamento, organização, tecnologia e o uso de instrumentos de precisão em cada projeto.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-[250px]">
+                
+                <div class="image-hover-zoom relative rounded-xl overflow-hidden lg:col-span-2 lg:row-span-2 shadow-2xl border border-white/10 group">
+                    <img src="foto de automação parte de automação 1.jpeg" class="w-full h-full object-cover" alt="Sistema SCADA Controle de Tanques">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-8">
+                        <span class="bg-engyellow text-engblue text-xs font-bold px-3 py-1 rounded-full w-max mb-3 uppercase">Automação Avançada</span>
+                        <h4 class="text-2xl md:text-3xl font-bold">Tela SCADA: Controle de Tanque Estratificado</h4>
+                        <p class="text-gray-300 mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Monitoramento PID, inversores de frequência e temperaturas em tempo real.</p>
+                    </div>
+                </div>
+
+                <div class="image-hover-zoom relative rounded-xl overflow-hidden shadow-xl border border-white/10 group">
+                    <img src="Essa fotos são partes painel elétricos 2.jpeg" class="w-full h-full object-cover" alt="Interior do Painel Siemens">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent flex flex-col justify-end p-6">
+                        <span class="text-engyellow text-xs font-bold uppercase mb-1 tracking-wider">Montagem Eletromecânica</span>
+                        <h4 class="text-lg font-bold leading-tight">Painéis com Inversores Siemens</h4>
+                    </div>
+                </div>
+
+                <div class="image-hover-zoom relative rounded-xl overflow-hidden shadow-xl border border-white/10 group">
+                    <img src="parte de infra estrutura passagem de cabos 2.jpeg" class="w-full h-full object-cover" alt="Passagem de cabos em leito">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent flex flex-col justify-end p-6">
+                        <span class="text-engyellow text-xs font-bold uppercase mb-1 tracking-wider">Infraestrutura</span>
+                        <h4 class="text-lg font-bold leading-tight">Leitos de Cabos Organizados</h4>
+                    </div>
+                </div>
+
+                <div class="image-hover-zoom relative rounded-xl overflow-hidden row-span-2 shadow-xl border border-white/10 group">
+                    <img src="parte de aterramento.jpeg" class="w-full h-full object-cover object-center" alt="Medição de Aterramento">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6">
+                        <span class="text-engyellow text-xs font-bold uppercase mb-1 tracking-wider">Laudos Técnicos</span>
+                        <h4 class="text-xl font-bold leading-tight">Medição com Terrômetro Digital</h4>
+                        <p class="text-gray-300 mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Certificação e garantia da baixa resistência de aterramento.</p>
+                    </div>
+                </div>
+
+                <div class="image-hover-zoom relative rounded-xl overflow-hidden shadow-xl border border-white/10 group">
+                    <img src="foto de automação parte de automação 3.jpeg" class="w-full h-full object-cover" alt="CLP e Cartões">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent flex flex-col justify-end p-6">
+                        <span class="text-engyellow text-xs font-bold uppercase mb-1 tracking-wider">Controle</span>
+                        <h4 class="text-lg font-bold leading-tight">CLP e Cartões de I/O</h4>
+                    </div>
+                </div>
+
+                <div class="image-hover-zoom relative rounded-xl overflow-hidden shadow-xl border border-white/10 group">
+                    <img src="parte de montagem  industrial tubulação sala de máquinas1.jpeg" class="w-full h-full object-cover" alt="Tubulação amarela válvulas">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent flex flex-col justify-end p-6">
+                        <span class="text-engyellow text-xs font-bold uppercase mb-1 tracking-wider">Tubulação Industrial</span>
+                        <h4 class="text-lg font-bold leading-tight">Redes de Fluídos / Válvulas</h4>
+                    </div>
+                </div>
+
+                <div class="image-hover-zoom relative rounded-xl overflow-hidden shadow-xl border border-white/10 group">
+                    <img src="parte de SPDA.jpeg" class="w-full h-full object-cover object-center" alt="Medição de SPDA">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent flex flex-col justify-end p-6">
+                        <span class="text-engyellow text-xs font-bold uppercase mb-1 tracking-wider">SPDA</span>
+                        <h4 class="text-lg font-bold leading-tight">Aferição de Hastes e SPDA</h4>
+                    </div>
+                </div>
+
+                <div class="image-hover-zoom relative rounded-xl overflow-hidden shadow-xl border border-white/10 group">
+                    <img src="parte de infra estrutura passagem de cabos 3.jpg" onerror="this.onerror=null; this.src='parte de infra estrutura passagem de cabos 3.jpeg';" class="w-full h-full object-cover" alt="Conjunto Motobombas">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent flex flex-col justify-end p-6">
+                        <span class="text-engyellow text-xs font-bold uppercase mb-1 tracking-wider">Mecânica</span>
+                        <h4 class="text-lg font-bold leading-tight">Skid de Motobombas Industriais</h4>
+                    </div>
+                </div>
+
+                <div class="image-hover-zoom relative rounded-xl overflow-hidden lg:col-span-2 shadow-xl border border-white/10 group">
+                    <img src="foto de automação parte de automação 2.jpeg" class="w-full h-full object-cover" alt="SCADA Fluxo Processo">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent flex flex-col justify-end p-6">
+                        <span class="text-engyellow text-xs font-bold uppercase mb-1 tracking-wider">Supervisório</span>
+                        <h4 class="text-xl font-bold leading-tight">Mapeamento Completo P&ID na Tela HMI</h4>
+                    </div>
+                </div>
+
+                 <div class="image-hover-zoom relative rounded-xl overflow-hidden shadow-xl border border-white/10 group">
+                    <img src="Essa fotos são partes painel elétricos 1.jpg" onerror="this.onerror=null; this.src='Essa fotos são partes painel elétricos 1.jpeg';" class="w-full h-full object-cover object-left" alt="Sala Elétrica QGBT">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent flex flex-col justify-end p-6">
+                        <span class="text-engyellow text-xs font-bold uppercase mb-1 tracking-wider">Força</span>
+                        <h4 class="text-lg font-bold leading-tight">Sala Elétrica / Conjunto de Painéis</h4>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato e CTA -->
+    <section id="contato" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden flex flex-col lg:flex-row relative z-10">
+                
+                <!-- Info Left -->
+                <div class="lg:w-5/12 bg-engblue text-white p-12 flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-3xl font-extrabold mb-4">Pronto para modernizar sua fábrica?</h3>
+                        <p class="text-gray-300 mb-8 leading-relaxed">Fale com nossos engenheiros. Avaliamos seu projeto desde a infraestrutura civil-mecânica até o último bit de programação do CLP.</p>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-engyellow">
+                                    <i data-lucide="map-pin"></i>
+                                </div>
+                                <div>
+                                    <!-- Endereço Atualizado -->
+                                    <p class="font-semibold text-lg">Toledo, Paraná, Brasil</p>
+                                    <p class="text-sm text-gray-400">Atendimento a nível nacional</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-engyellow">
+                                    <i data-lucide="phone"></i>
+                                </div>
+                                <div>
+                                    <!-- Telefone Atualizado -->
+                                    <p class="font-semibold text-lg">(45) 9 8843-0439</p>
+                                    <p class="text-sm text-gray-400">Suporte e Orçamentos</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-engyellow">
+                                    <i data-lucide="mail"></i>
+                                </div>
+                                <div>
+                                    <!-- E-mail Atualizado -->
+                                    <p class="font-semibold text-lg">engmaki@engmaki.com.br</p>
+                                    <p class="text-sm text-gray-400">Envie seu projeto para análise</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Seção de redes sociais foi removida conforme solicitado -->
+                </div>
+
+                <!-- Form Right -->
+                <div class="lg:w-7/12 p-12">
+                    <h3 class="text-2xl font-bold text-engblue mb-6">Solicite um Orçamento Técnico</h3>
+                    
+                    <!-- Adicionado id="formContato" para capturar os dados -->
+                    <form id="formContato" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Nome Completo *</label>
+                                <input type="text" id="campo_nome" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-engyellow focus:border-engyellow outline-none transition-all bg-gray-50" placeholder="Seu nome">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Empresa *</label>
+                                <input type="text" id="campo_empresa" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-engyellow focus:border-engyellow outline-none transition-all bg-gray-50" placeholder="Nome da Indústria">
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">E-mail</label>
+                                <input type="email" id="campo_email" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-engyellow focus:border-engyellow outline-none transition-all bg-gray-50" placeholder="email@empresa.com.br">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Telefone / WhatsApp *</label>
+                                <input type="tel" id="campo_telefone" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-engyellow focus:border-engyellow outline-none transition-all bg-gray-50" placeholder="(45) 9 0000-0000">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Serviço Desejado</label>
+                            <select id="campo_servico" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-engyellow focus:border-engyellow outline-none transition-all bg-gray-50 text-gray-600">
+                                <option>Automação e SCADA</option>
+                                <option>Montagem de Painéis (CCM/QGBT)</option>
+                                <option>Infraestrutura e Tubulação Industrial</option>
+                                <option>Projetos de SPDA e Aterramento</option>
+                                <option>Projetos de Iluminação Industrial</option>
+                                <option>Manutenção e Outros</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Detalhes do Projeto</label>
+                            <textarea id="campo_detalhes" rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-engyellow focus:border-engyellow outline-none transition-all bg-gray-50" placeholder="Descreva brevemente a necessidade da sua planta..."></textarea>
+                        </div>
+
+                        <!-- Botão type="submit" para ativar a validação e a função de envio -->
+                        <button type="submit" class="w-full bg-engblue text-white font-bold text-lg py-4 rounded-lg hover:bg-engblue_light transition-colors shadow-lg mt-4 flex items-center justify-center gap-2">
+                            Enviar Solicitação <i data-lucide="send" class="w-5 h-5 text-engyellow"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div class="md:col-span-2">
+                    <!-- Logo no Footer ajustada sem scale -->
+                    <div class="bg-white p-4 md:p-6 rounded-2xl inline-block mb-6 shadow-lg">
+                        <img 
+                            src="Logo atualizada.jpg" 
+                            alt="ENGMAKI Logo" 
+                            class="h-20 md:h-32 w-auto object-contain mix-blend-multiply"
+                            onerror="this.onerror=null; this.src='Logo.jpeg';"
+                        >
+                    </div>
+                    <p class="text-sm max-w-sm mb-4">Soluções industriais de ponta a ponta. Nossa missão é elevar a eficiência e a segurança da sua linha de produção com inteligência e robustez de infraestrutura.</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4 uppercase tracking-wider">Acesso Rápido</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#inicio" class="hover:text-engyellow transition-colors">Início</a></li>
+                        <li><a href="#solucoes" class="hover:text-engyellow transition-colors">Serviços e Soluções</a></li>
+                        <li><a href="#portfolio" class="hover:text-engyellow transition-colors">Obras e Projetos</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4 uppercase tracking-wider">Normas & Laudos</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li>NR-10 (Segurança em Elétrica)</li>
+                        <li>NR-12 (Segurança em Máquinas)</li>
+                        <li>NR-35 (Trabalho em Altura)</li>
+                        <li>Laudos de SPDA e Malhas NBR 5419</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs">
+                <p>&copy; 2024 ENGMAKI Solução Industrial. Todos os direitos reservados.</p>
+                <div class="mt-4 md:mt-0 space-x-4">
+                    <a href="#" class="hover:text-white transition-colors">Política de Privacidade</a>
+                    <a href="#" class="hover:text-white transition-colors">Termos de Uso</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Inicializar ícones Lucide
+        lucide.createIcons();
+
+        // Lógica do Menu Mobile
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Efeito de sombra na Navbar ao dar scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 10) {
+                nav.classList.add('shadow-md');
+            } else {
+                nav.classList.remove('shadow-md');
+            }
+        });
+
+        // Lógica para envio de e-mail via mailto
+        document.getElementById('formContato').addEventListener('submit', function(event) {
+            // Previne o recarregamento da página
+            event.preventDefault();
+
+            // Pega os valores dos campos
+            const nome = document.getElementById('campo_nome').value;
+            const empresa = document.getElementById('campo_empresa').value;
+            const email = document.getElementById('campo_email').value;
+            const telefone = document.getElementById('campo_telefone').value;
+            const servico = document.getElementById('campo_servico').value;
+            const detalhes = document.getElementById('campo_detalhes').value;
+
+            // Monta o assunto do e-mail
+            const assunto = `Solicitação de Orçamento - ${empresa} (${nome})`;
+
+            // Monta o corpo do e-mail de forma organizada
+            const corpo = `Olá Equipe ENGMAKI,
+            
+Gostaria de solicitar um orçamento. Seguem os dados:
+
+Nome: ${nome}
+Empresa: ${empresa}
+Telefone: ${telefone}
+E-mail: ${email}
+Serviço Desejado: ${servico}
+
+Detalhes do Projeto:
+${detalhes}
+
+Aguardo retorno.`;
+
+            // Codifica o texto para ser interpretado corretamente por links (URLs)
+            const mailtoLink = `mailto:engmaki@engmaki.com.br?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(corpo)}`;
+
+            // Redireciona para abrir o app de e-mail do usuário
+            window.location.href = mailtoLink;
+        });
+    </script>
+</body>
+</html>
